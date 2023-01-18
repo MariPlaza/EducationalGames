@@ -6,7 +6,35 @@ PyGame is a native Python library to develop Arcade style games. Although it mig
 
 PyGame works like a constant loop that ended when a specific event in the game happens. 
 
+pygame.mixer.init() Initialize the mixer for sounds. 
+pygame.init() Initialize the game itself. It needs to be there always. 
+clock = pygame.time.Clock() Set-Up the clock. 
 
+
+
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.USEREVENT
+clouds = pygame.sprite.Group() The groups allows to apply the same function to different sprites that shared a common characteristic. 
+
+   # Flip everything to the display
+    pygame.display.flip()
+
+    # Ensure we maintain a 30 frames per second rate
+    clock.tick(30)
+
+# At this point, we're done, so we can stop and quit the mixer
+
+
+# Variable to keep our main loop running
+running = True
+
+# Our main loop
+while running:
+
+screen.blit(entity.surf, entity.rect)
+
+# Stop the loop
+running = False
 
 ### Basic function from technical perspective of the game. 
 
@@ -14,7 +42,46 @@ PyGame works like a constant loop that ended when a specific event in the game h
 ### Colors 
 Colors are defined by name and are represented in a 3 numbers vector, each cell is a number from 0 to 255. 
 
+### Music and Sounds
+pygame.mixer.music.load("Apoxode_-_Electric_1.mp3")
+pygame.mixer.music.play(loops=-1) Averiguar este detalle. 
+pygame.mixer.music.stop()
+pygame.mixer.quit()
+
+move_up_sound = pygame.mixer.Sound("Rising_putter.ogg")
+move_down_sound.play()
+move_up_sound.set_volume(0.5)
+
+
+### Clock: 
+pygame.time.Clock()
+    # Ensure we maintain a 30 frames per second rate
+    clock.tick(30)
+
+
+### Events: 
+
+
+pygame.event.get():
+
+Custom Events: 
+
+ADDENEMY = pygame.USEREVENT + 1
+pygame.time.set_timer(ADDENEMY, 250)
+
+
+if event.type == KEYDOWN:
+if event.key == K_ESCAPE:
+event.type == ADDENEMY:
+
+    pressed_keys = pygame.key.get_pressed()
+    player.update(pressed_keys)
+
+
 ### Screen
+
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
 The main elements of the Screen are: 
 - Width
 - High
@@ -42,13 +109,35 @@ Sprites are the most common objects in PyGame. The library define it with a set 
         self.surf.set_colorkey((255, 255, 255), RLEACCEL)
         self.rect = self.surf.get_rect()
 
+#### Sprites Initialization
+
+- Surf:
+- Surf Color Key: set_colorkey(COLOR, RLEACCEL)
+- Rect: self.surf.get_rect() It might need to use the center, in which case you need to define x,y
+- Speed: random.randint(5, 20) Investigate which is the top and minimun speed. 
+
+#### Sprites Updates
+
+The updates define mainly the movement. 
+
 
 #### Sprites Group
 
 It is a group of Sprites that have certain elements in common. 
 
-#### Collide / Collisions
 
+#### Collide / Collisions
+self.kill() It is a method to eliminate the specific Sprite from the screen 
+pygame.sprite.spritecollideany(player, enemies)
+
+
+### Draw elements on the Screen
+
+    for entity in all_sprites:
+        screen.blit(entity.surf, entity.rect)
+
+    # Flip everything to the display
+    pygame.display.flip()
 
 
 ### Interaction between then. 
