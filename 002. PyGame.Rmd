@@ -1,8 +1,58 @@
-#About PyGame
+# About PyGame
 PyGame is a native Python library to develop Arcade style games. Although it might not be as fancy as other platforms for Game Development, it might be interesting for combinging several Data Science capabilities with the game development. 
 
 
-##Elements of PyGame
+## Elements of PyGame
+
+PyGame works like a constant loop that ended when a specific event in the game happens. 
+
+
+
+### Basic function from technical perspective of the game. 
+
+
+### Colors 
+Colors are defined by name and are represented in a 3 numbers vector, each cell is a number from 0 to 255. 
+
+### Screen
+The main elements of the Screen are: 
+- Width
+- High
+- Background
+
+If you want to configure the Screen size to the default of the computer you could use this code: 
+
+### Keys for movement
+
+self.rect.move_ip(x, y)
+
+pressed_keys[K_UP] (0, -y)
+pressed_keys[K_DOWN] (0, y)
+pressed_keys[K_LEFT] (-x, 0)
+pressed_keys[K_RIGHT] (x, 0)
+
+
+### Elements in the Screen
+
+#### Sprites
+
+Sprites are the most common objects in PyGame. The library define it with a set of methods that makes easy to create the kind of interaction that you want then into the game.
+
+       self.surf = pygame.image.load("jet.png").convert()
+        self.surf.set_colorkey((255, 255, 255), RLEACCEL)
+        self.rect = self.surf.get_rect()
+
+
+#### Sprites Group
+
+It is a group of Sprites that have certain elements in common. 
+
+#### Collide / Collisions
+
+
+
+### Interaction between then. 
+
 
 
 
