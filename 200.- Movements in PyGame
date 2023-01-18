@@ -1,0 +1,70 @@
+
+
+    RLEACCEL: RLE means Run-length encoding. http://en.wikipedia.org/wiki/Run-length_encoding
+
+RLEACCEL is the flag to denote Surface which is RLE encoded. http://www.pygame.org/docs/ref/surface.html
+
+## Keys to control
+
+    K_UP,
+    K_DOWN,
+    K_LEFT,
+    K_RIGHT,
+    
+    K_ESCAPE,
+    KEYDOWN,
+    QUIT
+
+There are movements that ocurred because the user of the game use the keyboard, when there are movement that are part of the dynamic of the game. 
+
+## Types of Movement: 
+
+
+
+self.rect.move_ip(x, y)
+pressed_keys[K_UP] (0, -y)
+pressed_keys[K_DOWN] (0, y)
+pressed_keys[K_LEFT] (-x, 0)
+pressed_keys[K_RIGHT] (x, 0)
+
+
+    # Move the sprite based on keypresses
+    def update(self, pressed_keys):
+        if pressed_keys[K_UP]:
+            self.rect.move_ip(0, -5)
+            move_up_sound.play()
+        if pressed_keys[K_DOWN]:
+            self.rect.move_ip(0, 5)
+            move_down_sound.play()
+        if pressed_keys[K_LEFT]:
+            self.rect.move_ip(-5, 0)
+        if pressed_keys[K_RIGHT]:
+            self.rect.move_ip(5, 0)
+
+        # Keep player on the screen
+        if self.rect.left < 0:
+            self.rect.left = 0
+        elif self.rect.right > SCREEN_WIDTH:
+            self.rect.right = SCREEN_WIDTH
+        if self.rect.top <= 0:
+            self.rect.top = 0
+        elif self.rect.bottom >= SCREEN_HEIGHT:
+            self.rect.bottom = SCREEN_HEIGHT
+
+
+
+# Keep player on the screen
+        if self.rect.left < 0:
+            self.rect.left = 0
+        elif self.rect.right > SCREEN_WIDTH:
+            self.rect.right = SCREEN_WIDTH
+        if self.rect.top <= 0:
+            self.rect.top = 0
+        elif self.rect.bottom >= SCREEN_HEIGHT:
+            self.rect.bottom = SCREEN_HEIGHT
+
+### Disapear
+
+       self.rect.move_ip(-self.speed, 0)
+        if self.rect.right < 0:
+            self.kill()
