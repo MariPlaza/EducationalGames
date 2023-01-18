@@ -1,0 +1,14 @@
+#About PyGame
+PyGame is a native Python library to develop Arcade style games. Although it might not be as fancy as other platforms for Game Development, it might be interesting for combinging several Data Science capabilities with the game development. 
+
+
+##Elements of PyGame
+
+
+
+## Basics of Functions
+
+
+
+
+## How to modularize PyGame
